@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  Notification.Demo
+//  Background-Fetch
 //
-//  Created by Mahadevan, Ramesh on 10/26/14.
+//  Created by Mahadevan, Ramesh on 10/29/14.
 //  Copyright (c) 2014 GoliaMania. All rights reserved.
 //
 
@@ -15,24 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-
-    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-//        let settings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert);
-//        UIApplication.sharedApplication().registerUserNotificationSettings(settings);
-        var notificationTypes: UIUserNotificationType = UIUserNotificationType.Badge |
-            UIUserNotificationType.Alert |
-            UIUserNotificationType.Sound;
-//        let settings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil);
-        
-        
-//        UIApplication.sharedApplication().registerForRemoteNotificationTypes(types: UIRemoteNotificationAlert);
-//        
         UIApplication.sharedApplication().setMinimumBackgroundFetchInterval(2);
+        return true
         
-        return true;
     }
-
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -61,14 +48,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data stack
 
     lazy var applicationDocumentsDirectory: NSURL = {
-        // The directory the application uses to store the Core Data store file. This code uses a directory named "com.golia.mania.Notification_Demo" in the application's documents Application Support directory.
+        // The directory the application uses to store the Core Data store file. This code uses a directory named "com.golia.mania.Background_Fetch" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
         return urls[urls.count-1] as NSURL
     }()
 
     lazy var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
-        let modelURL = NSBundle.mainBundle().URLForResource("Notification_Demo", withExtension: "momd")!
+        let modelURL = NSBundle.mainBundle().URLForResource("Background_Fetch", withExtension: "momd")!
         return NSManagedObjectModel(contentsOfURL: modelURL)!
     }()
 
@@ -76,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // The persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         // Create the coordinator and store
         var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("Notification_Demo.sqlite")
+        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("Background_Fetch.sqlite")
         var error: NSError? = nil
         var failureReason = "There was an error creating or loading the application's saved data."
         if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil, error: &error) == nil {
@@ -121,19 +108,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    
     func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         completionHandler(UIBackgroundFetchResult.NewData)
-        getData();
+        refresh();
     }
     
-    
-    func getData() -> Void{
-//        var localNotification:UILocalNotification = UILocalNotification()
-//        localNotification.alertAction = "Message From : Notification Todo";
-//        localNotification.alertBody = "Hello World !!!";
-//
-//        localNotification.fireDate = NSDate(timeIntervalSinceNow: 1)
-//        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+    func refresh() -> Void{
         var mainView: ViewController = window?.rootViewController as ViewController!;
         let formatter = NSDateFormatter()
         formatter.dateStyle = .NoStyle
@@ -142,8 +123,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let now = formatter.stringFromDate(NSDate())
         
         mainView.setHelloLabel("Hello WOrld !!! \(now)");
-        
     }
+        
+        
 
 }
 

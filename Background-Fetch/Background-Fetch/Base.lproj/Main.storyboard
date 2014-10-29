@@ -7,7 +7,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Notification_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Background_Fetch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,25 +16,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello World !!!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Npf-es-af5">
-                                <rect key="frame" x="247" y="289" width="106.5" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello World !!!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tXT-Lg-0Bo">
+                                <rect key="frame" x="247" y="290" width="106.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Bu-MR-bRx">
-                                <rect key="frame" x="0.0" y="326" width="600" height="162"/>
-                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="Npf-es-af5" secondAttribute="centerY" id="XjH-sJ-nw5"/>
-                            <constraint firstAttribute="centerX" secondItem="Npf-es-af5" secondAttribute="centerX" id="eje-KX-Hpw"/>
+                            <constraint firstAttribute="centerY" secondItem="tXT-Lg-0Bo" secondAttribute="centerY" id="5gS-eb-XZ9"/>
+                            <constraint firstAttribute="centerX" secondItem="tXT-Lg-0Bo" secondAttribute="centerX" id="k0s-iY-1q1"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="citiesList" destination="0Bu-MR-bRx" id="Sww-He-osK"/>
-                        <outlet property="helloWorldLabel" destination="Npf-es-af5" id="ggT-hG-yd6"/>
+                        <outlet property="helloLabel" destination="tXT-Lg-0Bo" id="kXn-zG-Tfj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
