@@ -23,8 +23,21 @@ class ViewController: UIViewController {
     }
 
 
-    func setHelloLabel(helloWorldText: NSString){
-        helloLabel.text = helloWorldText;
+    func onMessageReceived(helloWorldText: NSString){
+        sendMessage(helloWorldText);
+
+    }
+    
+    func sendMessage(now: NSString){
+        var encodedString = now.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding) as NSString!;
+        var url = "http://citypageapp.com/messages.retrieve?to=jane";
+        var request = NSURLRequest(URL: NSURL(string: url)!);
+        
+        NSURLConnection.sendAsynchronousRequest(request,queue: NSOperationQueue.mainQueue()) {
+            (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+            var receivedMessage = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary;
+            self.helloLabel.text = receivedMessage["body"] as NSString!;
+        }
     }
     
 }

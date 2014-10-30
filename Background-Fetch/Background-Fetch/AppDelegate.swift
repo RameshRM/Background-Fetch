@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         UIApplication.sharedApplication().setMinimumBackgroundFetchInterval(2);
         return true
-        
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -122,7 +121,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let now = formatter.stringFromDate(NSDate())
         
-        mainView.setHelloLabel("Hello WOrld !!! \(now)");
+        mainView.onMessageReceived("Hello World !!! \(now)");
     }
         
         
