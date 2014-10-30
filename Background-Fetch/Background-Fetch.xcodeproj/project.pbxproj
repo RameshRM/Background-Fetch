@@ -164,6 +164,11 @@
 				TargetAttributes = {
 					902EA01B1A0143E8008067B3 = {
 						CreatedOnToolsVersion = 6.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					902EA0331A0143E8008067B3 = {
 						CreatedOnToolsVersion = 6.1;
@@ -411,6 +416,7 @@
 				902EA0401A0143E8008067B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		902EA0411A0143E8008067B3 /* Build configuration list for PBXNativeTarget "Background-FetchTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +425,7 @@
 				902EA0431A0143E8008067B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
