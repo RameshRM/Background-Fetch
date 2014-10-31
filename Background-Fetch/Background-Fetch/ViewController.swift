@@ -21,15 +21,20 @@ class ViewController: UIViewController {
         self.send();
     }
     
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     
+    
     func onMessageReceived(messageArgs: NSString){
+        println(messageArgs);
+        self.helloLabel.text = messageArgs;
         processMessage(messageArgs);
     }
+    
     
     func processMessage(messageArgs: NSString){
         var encodedMessageArgs = messageArgs.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding) as NSString!;
@@ -42,6 +47,7 @@ class ViewController: UIViewController {
             self.helloLabel.text = receivedMessage["body"] as NSString!;
         }
     }
+    
     
     func getNow() -> NSTimeInterval{
         return NSDate().timeIntervalSince1970 * 1000;

@@ -11,34 +11,35 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
-
-
+    
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         UIApplication.sharedApplication().setMinimumBackgroundFetchInterval(2);
         return true
     }
-
+    
     
     
     func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
-        completionHandler(UIBackgroundFetchResult.NewData)
+        println("Background Fetch Complete");
+        completionHandler(UIBackgroundFetchResult.NewData);
         refresh();
     }
     
     func refresh() -> Void{
-        var mainView: ViewController = window?.rootViewController as ViewController!;
+        var mainView: UINavigationController = window?.rootViewController as UINavigationController!;
+        let viewController = mainView.viewControllers[0] as? ViewController;
+        
         let formatter = NSDateFormatter()
         formatter.dateStyle = .NoStyle
         formatter.timeStyle = .MediumStyle
         
         let now = formatter.stringFromDate(NSDate())
-        
-        mainView.onMessageReceived("Hello World !!! \(now)");
-    }
-        
-        
+        viewController?.onMessageReceived("Hello World !!! \(now)")
 
+        
+    }
 }
 
